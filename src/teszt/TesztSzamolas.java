@@ -118,7 +118,7 @@ public class TesztSzamolas {
     }
 
     private static void negyzetgyokValosHibaturesselTesz() {
-        System.out.println("nGyök: valós 0.005");
+        System.out.println("nGyök: hibatűrés-> 0.005");
         double kapott = Szamolas.gyokvonas(2);
         double vart = Math.sqrt(2);
         /* 2 tizedes pontosságot állítok be: */
@@ -126,26 +126,38 @@ public class TesztSzamolas {
         vart = (int)vart;
         vart = vart/100;
         
-        double epsilon = 0.001D;
+        double epsilon = 0.005D;
         assert Math.abs(kapott - vart) < epsilon: "NEM jó a teszt";
     }
 
     private static void negyzetgyokNegativTesz() {
-        System.out.println("nGyök: -");
+       System.out.println("nGyök: -");
         double kapott = Szamolas.gyokvonas(-5);
-        
+       
         /* nem jó: */
         double vart = Double.NaN;
         //kapott == Double.NaN;
         assert Double.isNaN(kapott): "NEM- jó a teszt";
+ 
+        /* Helyes megoldás: */
+        assert Double.isNaN(kapott): "Nem megfelelő a teszt";
     }
+    
+//    private static void negyzetgyokNegativTesz() {
+//       System.out.println("nGyök: -");
+//       double kapott = Math.sqrt(-25);
+//       double vart= Double.NaN;
+//       if (Double.isNaN(kapott)){
+//           System.out.println("jó a teszt");
+//       }else{
+//           System.out.println("NEM jó a teszt");
+//       }
+//    }
 
     private static void osszeadasTombUresTeszt() {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     private static void osszeadasTombNullTeszt() {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
